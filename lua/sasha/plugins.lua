@@ -77,6 +77,10 @@ return packer.startup(function(use)
 
   use "windwp/nvim-autopairs" -- autocloses brackets
 
+  -- Nice commenting out
+  use "numToStr/Comment.nvim" -- Easily comment stuff
+  use "JoosepAlviste/nvim-ts-context-commentstring" -- recognize what is a comment
+
   -- Automatically set up your configuration after cloning packer.nvim
   -- Put this at the end after all plugins
   if PACKER_BOOTSTRAP then
