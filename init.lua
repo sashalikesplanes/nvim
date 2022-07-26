@@ -5,4 +5,4 @@ require "sasha.plugins"
 require "sasha.cmp"
 require "sasha.lsp"
 require "sasha.telescope"
-
+require "sasha.treesitter"
