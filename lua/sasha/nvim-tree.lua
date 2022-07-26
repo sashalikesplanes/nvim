@@ -19,10 +19,6 @@ nvim_tree.setup {
   open_on_tab = false,
   hijack_cursor = false,
   update_cwd = true,
-  update_to_buf_dir = {
-    enabled = true,
-    auto_open = true,
-  },
   update_focused_file = {
     enable = true,
     update_cwd = true,
