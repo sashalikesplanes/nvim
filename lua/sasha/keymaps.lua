@@ -7,6 +7,9 @@ vim.g.mapleader = " "
 keymap("", "<Space>", "<Nop>", opts)
 vim.g.maplocalleader = " "
 
+-- Clear highlights
+keymap("n", "<leader>h", "<cmd>nohlsearch<CR>", opts)
+
 -- Better window navigation in normal mode
 keymap("n", "<C-h>", "<C-w>h", opts)
 keymap("n", "<C-j>", "<C-w>j", opts)
@@ -25,6 +28,9 @@ keymap("n", "<C-S-Right>", ":vertical resize +2<CR>", opts)
 keymap("n", "<S-l>", ":bnext<CR>", opts)
 keymap("n", "<S-h>", ":bprevious<CR>", opts)
 
+-- Close buffers
+keymap("n", "<S-q>", "<cmd>Bdelete!<CR>", opts)
+
 -- Visual, stay in indent
 keymap("v", "<", "<gv", opts)
 keymap("v", ">", ">gv", opts)
@@ -37,5 +43,13 @@ keymap("i", "<A-k>", "<Esc>:m .-2<CR>==gi", opts)
 keymap("v", "<A-j>", ":m '>+1<CR>gv=gv", opts)
 keymap("v", "<A-k>", ":m '<-2<CR>gv=gv", opts)
 
--- Hold on to the previous paste
+-- Better paste
 keymap("v", "p", '"_dP', opts)
+
+-- Plugins --
+
+-- Telescope
+keymap("n", "<leader>ff", ":Telescope find_files<CR>", opts)
+keymap("n", "<leader>ft", ":Telescope live_grep<CR>", opts)
+keymap("n", "<leader>fp", ":Telescope projects<CR>", opts)
+keymap("n", "<leader>fb", ":Telescope buffers<CR>", opts)
