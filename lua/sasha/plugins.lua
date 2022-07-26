@@ -56,6 +56,7 @@ return packer.startup(function(use)
   use "hrsh7th/cmp-cmdline" -- cmdline completions (for searching with /)
   use "saadparwaiz1/cmp_luasnip" -- snippet completion
   use "hrsh7th/cmp-nvim-lsp" -- lsp completion
+  use "hrsh7th/cmp-nvim-lua" -- lua specific autocomplete
 
   -- snippets
   use "L3MON4D3/LuaSnip" -- snippet engine
