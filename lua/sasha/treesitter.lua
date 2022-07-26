@@ -13,6 +13,9 @@ configs.setup {
     disable = { "" }, -- list of languages for which to disable
     additional_vim_regex_highlighting = true,
   },
+  autopairs = {
+    enable = true,
+  },
   indent = { enable = true, disable = { "yaml" } },
   rainbow = {
     enable = true,
