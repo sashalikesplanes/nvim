@@ -4,7 +4,7 @@ if not status_ok then
 end
 
 toggleterm.setup({
-	size = 20,
+	size = 40,
 	open_mapping = [[<c-\>]],
 	hide_numbers = true,
 	shade_filetypes = {},
@@ -48,6 +48,12 @@ local node = Terminal:new({ cmd = "node", hidden = true })
 
 function _NODE_TOGGLE()
 	node:toggle()
+end
+
+local run_dev = Terminal:new({ cmd = "", hidden = true })
+
+function _RUN_DEV_TOGGLE()
+  run_dev:toggle()
 end
 
 local ncdu = Terminal:new({ cmd = "ncdu", hidden = true })
