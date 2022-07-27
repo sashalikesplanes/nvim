@@ -47,7 +47,7 @@ return packer.startup(function(use)
   use "kyazdani42/nvim-web-devicons" -- Nice icons
 
   -- Colorscheme
-  use "folke/tokyonight.nvim" 
+  use "folke/tokyonight.nvim"
 
   -- cmp and extensions
   use "hrsh7th/nvim-cmp" -- base completion engine
@@ -87,6 +87,10 @@ return packer.startup(function(use)
 
   -- Nvim-Tree
   use "kyazdani42/nvim-tree.lua"
+
+  -- Bufferline
+  use "akinsho/bufferline.nvim" -- bufferline itself
+  use "moll/vim-bbye" -- ??
 
   -- Automatically set up your configuration after cloning packer.nvim
   -- Put this at the end after all plugins

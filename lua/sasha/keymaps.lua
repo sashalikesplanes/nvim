@@ -29,7 +29,7 @@ keymap("n", "<S-l>", ":bnext<CR>", opts)
 keymap("n", "<S-h>", ":bprevious<CR>", opts)
 
 -- Close buffers
-keymap("n", "<S-q>", "<cmd>Bdelete!<CR>", opts)
+keymap("n", "<S-q>", ":w<CR><cmd>Bdelete!<CR>", opts)
 
 -- Visual, stay in indent
 keymap("v", "<", "<gv", opts)
