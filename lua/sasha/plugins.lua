@@ -103,7 +103,10 @@ return packer.startup(function(use)
   use "ahmedkhalf/project.nvim"
 
   -- Fast loading of shit
-  use 'lewis6991/impatient.nvim'
+  use "lewis6991/impatient.nvim"
+
+  -- Indentline
+  use "lukas-reineke/indent-blankline.nvim"
 
   -- Automatically set up your configuration after cloning packer.nvim
   -- Put this at the end after all plugins
