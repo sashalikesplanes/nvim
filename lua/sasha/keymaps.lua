@@ -48,6 +48,9 @@ keymap("v", "p", '"_dP', opts)
 
 -- Plugins --
 
+-- Fromatting
+keymap("n", "<leader><S-f>", ":lua vim.lsp.buf.formatting_sync()<CR>", opts)
+
 -- Telescope
 keymap("n", "<leader>ff", ":Telescope find_files<CR>", opts)
 keymap("n", "<leader>ft", ":Telescope live_grep<CR>", opts)
