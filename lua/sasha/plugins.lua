@@ -46,8 +46,9 @@ return packer.startup(function(use)
   use "nvim-lua/plenary.nvim" -- Useful lua functions used by lots of plugins
   use "kyazdani42/nvim-web-devicons" -- Nice icons
 
-  -- Colorscheme
+  -- Colorschemes
   use "folke/tokyonight.nvim"
+  use "lunarvim/synthwave84.nvim"
 
   -- cmp and extensions
   use "hrsh7th/nvim-cmp" -- base completion engine

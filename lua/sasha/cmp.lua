@@ -66,7 +66,7 @@ cmp.setup {
     },
     -- Accept current item, if none then first
     -- Set `select` to `false` to only confirm explicitly selected
-    ["<CR>"] = cmp.mapping.confirm { select = true },
+    ["<CR>"] = cmp.mapping.confirm { select = false },
     -- SUPER TAB!!
     ["<Tab>"] = cmp.mapping(function(fallback)
       if cmp.visible() then

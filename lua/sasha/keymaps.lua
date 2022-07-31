@@ -8,7 +8,7 @@ keymap("", "<Space>", "<Nop>", opts)
 vim.g.maplocalleader = " "
 
 -- Clear highlights
-keymap("n", "<leader>h", "<cmd>nohlsearch<CR>", opts)
+keymap("n", "<leader>/", "<cmd>nohlsearch<CR>", opts)
 
 -- Better window navigation in normal mode
 keymap("n", "<C-h>", "<C-w>h", opts)

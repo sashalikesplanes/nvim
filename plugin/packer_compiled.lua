@@ -219,6 +219,11 @@ _G.packer_plugins = {
     path = "/Users/sasha/.local/share/nvim/site/pack/packer/start/project.nvim",
     url = "https://github.com/ahmedkhalf/project.nvim"
   },
+  ["synthwave84.nvim"] = {
+    loaded = true,
+    path = "/Users/sasha/.local/share/nvim/site/pack/packer/start/synthwave84.nvim",
+    url = "https://github.com/lunarvim/synthwave84.nvim"
+  },
   ["telescope.nvim"] = {
     loaded = true,
     path = "/Users/sasha/.local/share/nvim/site/pack/packer/start/telescope.nvim",

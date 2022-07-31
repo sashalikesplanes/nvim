@@ -11,7 +11,10 @@ local diagnostics = null_ls.builtins.diagnostics
 null_ls.setup {
   debug = false,
   sources = {
-    formatting.prettier.with { extra_args = { "--single-quote", "--jsx-single-quote" } },
+    formatting.prettier.with { filetypes = {
+      "javascript", "typescript", "css", "scss", "html", "json", "yaml", "markdown", "graphql", "md", "txt",
+    },
+      extra_args = { "--single-quote", "--jsx-single-quote", "--print-width 100" } },
     formatting.black.with { extra_args = { "--fast" } },
     diagnostics.eslist,
     -- formatting.yapf,

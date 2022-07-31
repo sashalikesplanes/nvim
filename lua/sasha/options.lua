@@ -1,5 +1,6 @@
 local o = vim.opt
 
+o.guifont = { "Hack Nerd Font", "h12"}
 o.colorcolumn = "80"
 o.number = true                           -- set numbered lines
 o.relativenumber = true
