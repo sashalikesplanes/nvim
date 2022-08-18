@@ -16,6 +16,7 @@ null_ls.setup {
     },
       extra_args = { "--single-quote", "--jsx-single-quote", "--print-width 100" } },
     formatting.black.with { extra_args = { "--fast" } },
+    formatting.rustfmt.with { filetypes = { "rust" }},
     diagnostics.eslist,
     -- formatting.yapf,
     formatting.stylua,
