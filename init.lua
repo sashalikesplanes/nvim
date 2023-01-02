@@ -1,3 +1,31 @@
+if vim.g.vscode then
+  vim.o.hlsearch = false
+
+  vim.g.mapleader = ' '
+  vim.g.maplocalleader = ' '
+
+  -- Keymaps for better default experience
+  -- See `:help vim.keymap.set()`
+  vim.keymap.set({ 'n', 'v' }, '<Space>', '<Nop>', { silent = true })
+
+  -- Remap for dealing with word wrap
+  vim.keymap.set('n', 'k', "v:count == 0 ? 'gk' : 'k'", { expr = true, silent = true })
+  vim.keymap.set('n', 'j', "v:count == 0 ? 'gj' : 'j'", { expr = true, silent = true })
+
+  vim.keymap.set({ 'v' }, '<leader>r', [[<Cmd>call VSCodeNotifyVisual('editor.action.refactor', 1)<CR>]])
+  vim.keymap.set({ 'n' }, '<leader>r', [[<Cmd>call VSCodeNotify('editor.action.rename')<CR>]])
+
+  -- [[ Highlight on yank ]]
+  -- See `:help vim.highlight.on_yank()`
+  local highlight_group = vim.api.nvim_create_augroup('YankHighlight', { clear = true })
+  vim.api.nvim_create_autocmd('TextYankPost', {
+    callback = function()
+      vim.highlight.on_yank()
+    end,
+    group = highlight_group,
+    pattern = '*',
+  })
+else
 -- Install packer
 local install_path = vim.fn.stdpath 'data' .. '/site/pack/packer/start/packer.nvim'
 local is_bootstrap = false
@@ -54,6 +82,32 @@ require('packer').startup(function(use)
   use 'lukas-reineke/indent-blankline.nvim' -- Add indentation guides even on blank lines
   use 'numToStr/Comment.nvim' -- "gc" to comment visual regions/lines
   use 'tpope/vim-sleuth' -- Detect tabstop and shiftwidth automatically
+
+  use 'xiyaowong/nvim-transparent' -- Make stuff transparent
+  use 'jiangmiao/auto-pairs' -- Auto make closing pairs
+  use {
+    'nvim-tree/nvim-tree.lua',
+    requires = {
+      'nvim-tree/nvim-web-devicons', -- optional, for file icons
+    },
+    tag = 'nightly' -- optional, updated every week. (see issue #1193)
+  }
+
+  use { 'alexghergh/nvim-tmux-navigation', config = function()
+        require'nvim-tmux-navigation'.setup {
+            disable_when_zoomed = true, -- defaults to false
+            keybindings = {
+                left = "<C-h>",
+                down = "<C-j>",
+                up = "<C-k>",
+                right = "<C-l>",
+                last_active = "<C-\\>",
+                next = "<C-Space>",
+            }
+        }
+    end
+}
+
 
   -- Fuzzy Finder (files, lsp, etc)
   use { 'nvim-telescope/telescope.nvim', branch = '0.1.x', requires = { 'nvim-lua/plenary.nvim' } }
@@ -120,9 +174,18 @@ vim.o.smartcase = true
 vim.o.updatetime = 250
 vim.wo.signcolumn = 'yes'
 
+-- vim: ts=2 sts=2 sw=2 et
+vim.o.tabstop = 2
+vim.o.softtabstop = 2
+vim.o.shiftwidth = 2
+
 -- Set colorscheme
 vim.o.termguicolors = true
 vim.cmd [[colorscheme tokyonight-night]]
+
+-- Settings for NvimTree
+vim.g.loaded_netrw = 1
+vim.g.loaded_netrwPlugin = 1
 
 -- Set completeopt to have a better completion experience
 vim.o.completeopt = 'menuone,noselect'
@@ -186,6 +249,16 @@ require('gitsigns').setup {
   },
 }
 
+require("transparent").setup({
+  enable = true, -- boolean: enable transparent
+  extra_groups = { -- table/string: additional groups that should be cleared
+    -- In particular, when you set it to 'all', that means all available groups
+
+    -- example of akinsho/nvim-bufferline.lua
+  },
+  exclude = {}, -- table: groups you don't want to clear
+})
+
 -- [[ Configure Telescope ]]
 -- See `:help telescope` and `:help telescope.setup()`
 require('telescope').setup {
@@ -198,6 +271,20 @@ require('telescope').setup {
     },
   },
 }
+
+-- OR setup with some options
+require("nvim-tree").setup({
+  sort_by = "case_sensitive",
+  view = {
+    adaptive_size = true,
+  },
+  renderer = {
+    group_empty = true,
+  },
+  filters = {
+    dotfiles = true,
+  },
+})
 
 -- Enable telescope fzf native, if installed
 pcall(require('telescope').load_extension, 'fzf')
@@ -218,6 +305,8 @@ vim.keymap.set('n', '<leader>sh', require('telescope.builtin').help_tags, { desc
 vim.keymap.set('n', '<leader>sw', require('telescope.builtin').grep_string, { desc = '[S]earch current [W]ord' })
 vim.keymap.set('n', '<leader>sg', require('telescope.builtin').live_grep, { desc = '[S]earch by [G]rep' })
 vim.keymap.set('n', '<leader>sd', require('telescope.builtin').diagnostics, { desc = '[S]earch [D]iagnostics' })
+
+vim.keymap.set('n', '<leader>e', require('nvim-tree').toggle, { desc = 'Open [E]xplorer' })
 
 -- [[ Configure Treesitter ]]
 -- See `:help nvim-treesitter`
@@ -285,7 +374,7 @@ require('nvim-treesitter.configs').setup {
 -- Diagnostic keymaps
 vim.keymap.set('n', '[d', vim.diagnostic.goto_prev)
 vim.keymap.set('n', ']d', vim.diagnostic.goto_next)
-vim.keymap.set('n', '<leader>e', vim.diagnostic.open_float)
+vim.keymap.set('n', '<leader>d', vim.diagnostic.open_float)
 vim.keymap.set('n', '<leader>q', vim.diagnostic.setloclist)
 
 -- LSP settings.
@@ -352,6 +441,21 @@ local servers = {
     },
   },
 }
+
+vim.api.nvim_create_autocmd("CursorHold", {
+  buffer = bufnr,
+  callback = function()
+    local opts = {
+      focusable = false,
+      close_events = { "BufLeave", "CursorMoved", "InsertEnter", "FocusLost" },
+      border = 'rounded',
+      source = 'always',
+      prefix = ' ',
+      scope = 'cursor',
+    }
+    vim.diagnostic.open_float(nil, opts)
+  end
+})
 
 -- Setup neovim lua configuration
 require('neodev').setup()
@@ -428,3 +532,4 @@ cmp.setup {
 
 -- The line beneath this is called `modeline`. See `:help modeline`
 -- vim: ts=2 sts=2 sw=2 et
+end
