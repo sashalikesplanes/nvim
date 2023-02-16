@@ -28,9 +28,27 @@ if vim.g.vscode then
   vim.keymap.set({ 'n' }, '<leader>jp', [[<Cmd>call VSCodeNotify('extension.runPrevJest')<CR>]])
   vim.keymap.set({ 'n' }, '<leader>jd', [[<Cmd>call VSCodeNotify('extension.debugJest')<CR>]])
   vim.keymap.set({ 'n' }, '<leader>jw', [[<Cmd>call VSCodeNotify('extension.watchJest')<CR>]])
+  
+  -- Debug runner
+  vim.keymap.set({ 'n' }, '<leader>d', [[<Cmd>call VSCodeNotify('workbench.action.debug.start')<CR>]])
+  vim.keymap.set({ 'n' }, '<leader>dr', [[<Cmd>call VSCodeNotify('workbench.action.debug.restart')<CR>]])
+  vim.keymap.set({ 'n' }, '<leader>db', [[<Cmd>call VSCodeNotify('editor.debug.action.toggleBreakpoint')<CR>]])
+  vim.keymap.set({ 'n' }, '<leader>ds', [[<Cmd>call VSCodeNotify('workbench.action.debug.stop')<CR>]])
+  vim.keymap.set({ 'n' }, '<leader>dc', [[<Cmd>call VSCodeNotify('workbench.action.debug.continue')<CR>]])
+  vim.keymap.set({ 'n' }, '<leader>dn', [[<Cmd>call VSCodeNotify('workbench.action.debug.stepOver')<CR>]])
+  vim.keymap.set({ 'n' }, '<leader>dsi', [[<Cmd>call VSCodeNotify('workbench.action.debug.stepInto')<CR>]])
+  vim.keymap.set({ 'n' }, '<leader>dso', [[<Cmd>call VSCodeNotify('workbench.action.debug.stepOut')<CR>]])
+  vim.keymap.set({ 'n' }, '<leader>dk', [[<Cmd>call VSCodeNotify('editor.debug.action.showDebugHover')<CR>]])
 
   -- Nx console
   vim.keymap.set({ 'n' }, '<leader>nr', [[<Cmd>call VSCodeNotify('nx.run.target')<CR>]])
+  
+  -- Toggle CoPilot
+  vim.keymap.set({ 'n' }, '<leader>ct', [[<Cmd>call VSCodeNotify('github.copilot.toggleCopilot')<CR>]])
+  
+  -- Yank remote URL 
+  vim.keymap.set({ 'n' }, '<leader>yr', [[<Cmd>call VSCodeNotify('gitlens.copyRemoteFileUrlToClipboard')<CR>]])
+  
 
   -- [[ Highlight on yank ]]
   -- See `:help vim.highlight.on_yank()`
