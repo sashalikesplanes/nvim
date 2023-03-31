@@ -49,6 +49,9 @@ if vim.g.vscode then
   -- Yank remote URL 
   vim.keymap.set({ 'n' }, '<leader>yr', [[<Cmd>call VSCodeNotify('gitlens.copyRemoteFileUrlToClipboard')<CR>]])
   
+  -- Format document
+  vim.keymap.set({ 'n' }, '<leader>fo', [[<Cmd>call VSCodeNotify('editor.action.organizeImports')<CR>]])
+  vim.keymap.set({ 'n' }, '<leader>ff', [[<Cmd>call VSCodeNotify('editor.action.formatDocument')<CR>]])
 
   -- [[ Highlight on yank ]]
   -- See `:help vim.highlight.on_yank()`
