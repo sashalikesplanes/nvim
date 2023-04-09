@@ -2,8 +2,8 @@ require('copilot').setup({
   suggestion = {
     auto_trigger = true,
     keymap = {
-      accept = "<M-y>",
-      accept_word = "<M-l>",
+      accept = "<M-cr>",
+      accept_word = "<M-tab>",
     }
   }
 })

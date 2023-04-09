@@ -100,7 +100,7 @@ return require('packer').startup(function(use)
 
   use {
     'voldikss/vim-floaterm',
-    config = function ()
+    config = function()
       vim.g.floaterm_wintype = 'vsplit'
       vim.g.floaterm_height = 0.8
       vim.g.floaterm_position = 'botright'
@@ -111,17 +111,19 @@ return require('packer').startup(function(use)
   use {
     'nvim-orgmode/orgmode',
     config = function()
-      require('orgmode').setup{}
+      require('orgmode').setup {}
     end
   }
 
   use { "zbirenbaum/copilot.lua" }
 
-   use({
-    'willothy/nvim-cokeline',
-    requires = 'kyazdani42/nvim-web-devicons', -- If you want devicons
-    config = function()
-      require('cokeline').setup()
-    end
-  })
+  use {
+    "windwp/nvim-autopairs",
+    config = function() require("nvim-autopairs").setup {} end
+  }
+
+  use {
+    'nvim-lualine/lualine.nvim',
+    requires = { 'nvim-tree/nvim-web-devicons', opt = true }
+  }
 end)

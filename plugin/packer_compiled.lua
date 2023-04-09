@@ -110,6 +110,11 @@ _G.packer_plugins = {
     path = "/Users/sasha/.local/share/nvim/site/pack/packer/start/lsp-zero.nvim",
     url = "https://github.com/VonHeikemen/lsp-zero.nvim"
   },
+  ["lualine.nvim"] = {
+    loaded = true,
+    path = "/Users/sasha/.local/share/nvim/site/pack/packer/start/lualine.nvim",
+    url = "https://github.com/nvim-lualine/lualine.nvim"
+  },
   ["mason-lspconfig.nvim"] = {
     loaded = true,
     path = "/Users/sasha/.local/share/nvim/site/pack/packer/start/mason-lspconfig.nvim",
@@ -125,16 +130,16 @@ _G.packer_plugins = {
     path = "/Users/sasha/.local/share/nvim/site/pack/packer/start/nui.nvim",
     url = "https://github.com/MunifTanjim/nui.nvim"
   },
+  ["nvim-autopairs"] = {
+    config = { "\27LJ\2\n@\0\0\3\0\3\0\a6\0\0\0'\2\1\0B\0\2\0029\0\2\0004\2\0\0B\0\2\1K\0\1\0\nsetup\19nvim-autopairs\frequire\0" },
+    loaded = true,
+    path = "/Users/sasha/.local/share/nvim/site/pack/packer/start/nvim-autopairs",
+    url = "https://github.com/windwp/nvim-autopairs"
+  },
   ["nvim-cmp"] = {
     loaded = true,
     path = "/Users/sasha/.local/share/nvim/site/pack/packer/start/nvim-cmp",
     url = "https://github.com/hrsh7th/nvim-cmp"
-  },
-  ["nvim-cokeline"] = {
-    config = { "\27LJ\2\n6\0\0\3\0\3\0\0066\0\0\0'\2\1\0B\0\2\0029\0\2\0B\0\1\1K\0\1\0\nsetup\rcokeline\frequire\0" },
-    loaded = true,
-    path = "/Users/sasha/.local/share/nvim/site/pack/packer/start/nvim-cokeline",
-    url = "https://github.com/willothy/nvim-cokeline"
   },
   ["nvim-lspconfig"] = {
     loaded = true,
@@ -152,9 +157,10 @@ _G.packer_plugins = {
     url = "https://github.com/nvim-treesitter/nvim-treesitter-context"
   },
   ["nvim-web-devicons"] = {
-    loaded = true,
-    path = "/Users/sasha/.local/share/nvim/site/pack/packer/start/nvim-web-devicons",
-    url = "https://github.com/kyazdani42/nvim-web-devicons"
+    loaded = false,
+    needs_bufread = false,
+    path = "/Users/sasha/.local/share/nvim/site/pack/packer/opt/nvim-web-devicons",
+    url = "https://github.com/nvim-tree/nvim-web-devicons"
   },
   orgmode = {
     config = { "\27LJ\2\n9\0\0\3\0\3\0\a6\0\0\0'\2\1\0B\0\2\0029\0\2\0004\2\0\0B\0\2\1K\0\1\0\nsetup\forgmode\frequire\0" },
@@ -213,14 +219,6 @@ _G.packer_plugins = {
 }
 
 time([[Defining packer_plugins]], false)
--- Config for: which-key.nvim
-time([[Config for which-key.nvim]], true)
-try_loadstring("\27LJ\2\nt\0\0\3\0\a\0\0156\0\0\0009\0\1\0+\1\2\0=\1\2\0006\0\0\0009\0\1\0)\1,\1=\1\3\0006\0\4\0'\2\5\0B\0\2\0029\0\6\0004\2\0\0B\0\2\1K\0\1\0\nsetup\14which-key\frequire\15timeoutlen\ftimeout\6o\bvim\0", "config", "which-key.nvim")
-time([[Config for which-key.nvim]], false)
--- Config for: nvim-cokeline
-time([[Config for nvim-cokeline]], true)
-try_loadstring("\27LJ\2\n6\0\0\3\0\3\0\0066\0\0\0'\2\1\0B\0\2\0029\0\2\0B\0\1\1K\0\1\0\nsetup\rcokeline\frequire\0", "config", "nvim-cokeline")
-time([[Config for nvim-cokeline]], false)
 -- Config for: ChatGPT.nvim
 time([[Config for ChatGPT.nvim]], true)
 try_loadstring("\27LJ\2\n9\0\0\3\0\3\0\a6\0\0\0'\2\1\0B\0\2\0029\0\2\0004\2\0\0B\0\2\1K\0\1\0\nsetup\fchatgpt\frequire\0", "config", "ChatGPT.nvim")
@@ -229,14 +227,22 @@ time([[Config for ChatGPT.nvim]], false)
 time([[Config for rose-pine]], true)
 try_loadstring("\27LJ\2\n=\0\0\3\0\4\0\0066\0\0\0009\0\1\0009\0\2\0'\2\3\0B\0\2\1K\0\1\0\14rose-pine\16colorscheme\bcmd\bvim\0", "config", "rose-pine")
 time([[Config for rose-pine]], false)
--- Config for: orgmode
-time([[Config for orgmode]], true)
-try_loadstring("\27LJ\2\n9\0\0\3\0\3\0\a6\0\0\0'\2\1\0B\0\2\0029\0\2\0004\2\0\0B\0\2\1K\0\1\0\nsetup\forgmode\frequire\0", "config", "orgmode")
-time([[Config for orgmode]], false)
+-- Config for: nvim-autopairs
+time([[Config for nvim-autopairs]], true)
+try_loadstring("\27LJ\2\n@\0\0\3\0\3\0\a6\0\0\0'\2\1\0B\0\2\0029\0\2\0004\2\0\0B\0\2\1K\0\1\0\nsetup\19nvim-autopairs\frequire\0", "config", "nvim-autopairs")
+time([[Config for nvim-autopairs]], false)
 -- Config for: vim-floaterm
 time([[Config for vim-floaterm]], true)
 try_loadstring("\27LJ\2\n±\1\0\0\2\0\b\1\0176\0\0\0009\0\1\0'\1\3\0=\1\2\0006\0\0\0009\0\1\0*\1\0\0=\1\4\0006\0\0\0009\0\1\0'\1\6\0=\1\5\0006\0\0\0009\0\1\0)\1\0\0=\1\a\0K\0\1\0\23floaterm_autoclose\rbotright\22floaterm_position\20floaterm_height\vvsplit\21floaterm_wintype\6g\bvimµæÌ™\19™³¦ÿ\3\0", "config", "vim-floaterm")
 time([[Config for vim-floaterm]], false)
+-- Config for: which-key.nvim
+time([[Config for which-key.nvim]], true)
+try_loadstring("\27LJ\2\nt\0\0\3\0\a\0\0156\0\0\0009\0\1\0+\1\2\0=\1\2\0006\0\0\0009\0\1\0)\1,\1=\1\3\0006\0\4\0'\2\5\0B\0\2\0029\0\6\0004\2\0\0B\0\2\1K\0\1\0\nsetup\14which-key\frequire\15timeoutlen\ftimeout\6o\bvim\0", "config", "which-key.nvim")
+time([[Config for which-key.nvim]], false)
+-- Config for: orgmode
+time([[Config for orgmode]], true)
+try_loadstring("\27LJ\2\n9\0\0\3\0\3\0\a6\0\0\0'\2\1\0B\0\2\0029\0\2\0004\2\0\0B\0\2\1K\0\1\0\nsetup\forgmode\frequire\0", "config", "orgmode")
+time([[Config for orgmode]], false)
 
 _G._packer.inside_compile = false
 if _G._packer.needs_bufread == true then

@@ -12,6 +12,8 @@ vim.keymap.set("n", "<leader>wq", "<C-w>q")
 vim.keymap.set("n", "<leader>w=", "<C-w>=")
 vim.keymap.set("n", "<leader>wo", "<C-w>o")
 
+vim.keymap.set({ 'n', 'v' }, '<Space>', '<Nop>', { silent = true })
+
 
 -- Move selection up and down
 vim.keymap.set("v", "K", ":m '<-2<CR>gv=gv")
@@ -37,8 +39,5 @@ vim.keymap.set("v", "<leader>y", "\"+y")
 vim.keymap.set("n", "<leader>Y", "\"+Y")
 
 vim.keymap.set("n", "Q", "<nop>")
-
-vim.keymap.set("n", "<leader>G", vim.cmd.ChatGPT)
-vim.keymap.set("v", "<leader>G", vim.cmd.ChatGPTEditWithInstructions)
 
 vim.keymap.set("n", "<leader>D", vim.diagnostic.open_float)

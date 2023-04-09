@@ -7,7 +7,3 @@ vim.keymap.set('n', '<leader>t', function()
   vim.cmd('FloatermToggle')
   vim.cmd('stopinsert')
 end)
-
--- Toggle the terminal to make sure it exists
-vim.cmd('FloatermToggle')
-vim.cmd('FloatermToggle')
