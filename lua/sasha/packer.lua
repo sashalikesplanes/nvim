@@ -137,4 +137,7 @@ return require('packer').startup(function(use)
       show_trailing_blankline_indent = false,
     },
   }
+
+  use { 'sunjon/shade.nvim', config = function() require('shade').setup {} end }
+
 end)
