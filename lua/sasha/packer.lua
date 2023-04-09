@@ -22,7 +22,6 @@ return require('packer').startup(function(use)
   }
 
   use 'nvim-treesitter/nvim-treesitter-context'
-
   use('theprimeagen/harpoon')
   use('mbbill/undotree')
   use('tpope/vim-fugitive')
@@ -78,16 +77,18 @@ return require('packer').startup(function(use)
 
   use { -- Adds git releated signs to the gutter, as well as utilities for managing changes
     'lewis6991/gitsigns.nvim',
-    opts = {
-      -- See `:help gitsigns.txt`
-      signs = {
-        add = { text = '+' },
-        change = { text = '~' },
-        delete = { text = '_' },
-        topdelete = { text = '‾' },
-        changedelete = { text = '~' },
-      },
-    },
+    config = function()
+      require('gitsigns').setup({
+          -- See `:help gitsigns.txt`
+          signs = {
+            add = { text = '+' },
+            change = { text = '~' },
+            delete = { text = '_' },
+            topdelete = { text = '‾' },
+            changedelete = { text = '~' },
+          },
+        })
+    end
   }
 
   use {
@@ -125,5 +126,15 @@ return require('packer').startup(function(use)
   use {
     'nvim-lualine/lualine.nvim',
     requires = { 'nvim-tree/nvim-web-devicons', opt = true }
+  }
+
+  use { -- Add indentation guides even on blank lines
+    'lukas-reineke/indent-blankline.nvim',
+    -- Enable `lukas-reineke/indent-blankline.nvim`
+    -- See `:help indent_blankline.txt`
+    opts = {
+      char = '┊',
+      show_trailing_blankline_indent = false,
+    },
   }
 end)
