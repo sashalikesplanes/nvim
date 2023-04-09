@@ -10,3 +10,11 @@ vim.keymap.set('n', '<leader>w1', function() ui.nav_file(1) end)
 vim.keymap.set('n', '<leader>w2', function() ui.nav_file(2) end)
 vim.keymap.set('n', '<leader>w3', function() ui.nav_file(3) end)
 vim.keymap.set('n', '<leader>w4', function() ui.nav_file(4) end)
+vim.keymap.set('n', '<leader>w5', function() ui.nav_file(4) end)
+
+mark.on('changed', function ()
+  require('lualine').refresh({
+    scope = 'tabpage',
+    place = { 'tabline' }
+  })
+end)
