@@ -44,7 +44,7 @@ return {
     config = function()
       vim.keymap.set('n', '<leader>gs', function()
         vim.cmd.Git()
-        vim.api.nvim_command("wincmd _ | wincmd |")
+        vim.api.nvim_command("wincmd o")
       end, { desc = '[G]it [S]tatus' })
     end
   },
