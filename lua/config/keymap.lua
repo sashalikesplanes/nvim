@@ -1,16 +1,15 @@
 vim.g.mapleader = " "
+-- Exit terinal with <esc><exc>
 vim.keymap.set("t", "<esc><esc>", "<C-\\><C-n>")
-vim.keymap.set("n", "<leader>pv", vim.cmd.Ex)
+vim.keymap.set("n", "<leader>pv", vim.cmd.Ex, { desc = "[P]roject [V]iew" })
 
-vim.keymap.set("n", "<leader>ws", "<C-w>s")
-vim.keymap.set("n", "<leader>wv", "<C-w>v")
-vim.keymap.set("n", "<leader>wh", "<C-w>h")
-vim.keymap.set("n", "<leader>wj", "<C-w>j")
-vim.keymap.set("n", "<leader>wk", "<C-w>k")
-vim.keymap.set("n", "<leader>wl", "<C-w>l")
-vim.keymap.set("n", "<leader>wq", "<C-w>q")
-vim.keymap.set("n", "<leader>w=", "<C-w>=")
-vim.keymap.set("n", "<leader>wo", "<C-w>o")
+-- Use <leader>w instead of <C-w>
+vim.keymap.set("n", "<C-w>|", "<C-w>v", { desc = "Horizontal [S]plit" })
+vim.keymap.set("n", "<C-w>-", "<C-w>s", { desc = "Horizontal [S]plit" })
+
+-- Unlearn the muscle memory
+vim.keymap.set("n", "<C-w>v", "<nop>")
+vim.keymap.set("n", "<C-w>s", "<nop>")
 
 vim.keymap.set({ 'n', 'v' }, '<Space>', '<Nop>', { silent = true })
 
@@ -40,4 +39,4 @@ vim.keymap.set("n", "<leader>Y", "\"+Y")
 
 vim.keymap.set("n", "Q", "<nop>")
 
-vim.keymap.set("n", "<leader>D", vim.diagnostic.open_float)
+vim.keymap.set("n", "<leader>D", vim.diagnostic.open_float, { desc = "Float [D]iagnostic" })
