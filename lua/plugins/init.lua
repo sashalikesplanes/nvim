@@ -24,7 +24,6 @@ return {
       end, { desc = 'Toggle [U]ndo [T]ree' })
     end
   },
-  "tpope/vim-fugitive",
   "nvim-tree/nvim-web-devicons",
   {
     -- Adds git releated signs to the gutter, as well as utilities for managing changes
@@ -51,7 +50,7 @@ return {
   {
     "tpope/vim-fugitive",
     config = function()
-      vim.keymap.set('n', '<leader>gs', function()
+      vim.keymap.set('n', '<leader>gS', function()
         vim.cmd.Git()
       end, { desc = '[G]it [S]tatus' })
     end
