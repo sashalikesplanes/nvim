@@ -28,6 +28,8 @@ return {
   {
     -- Adds git releated signs to the gutter, as well as utilities for managing changes
     'lewis6991/gitsigns.nvim',
+    lazy = true,
+    event = 'VeryLazy',
     config = function()
       require('gitsigns').setup({
         -- See `:help gitsigns.txt`
@@ -64,12 +66,6 @@ return {
       char = '┊',
       show_trailing_blankline_indent = false,
     },
-  },
-  {
-    'sunjon/shade.nvim',
-    config = function()
-      require('shade').setup()
-    end
   },
   { 'tpope/vim-commentary' }
 }
