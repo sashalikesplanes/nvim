@@ -52,24 +52,24 @@ return {
             winbar = 1000,
           }
         },
-          sections = {
-          lualine_a = {'mode'},
-          lualine_b = {'diff', 'diagnostics'},
-          lualine_c = {'filename'},
-          lualine_x = {'filetype'},
-          lualine_y = {'progress'},
-          lualine_z = {'location'}
+        sections = {
+          lualine_a = { 'mode' },
+          lualine_b = { 'diff', 'diagnostics' },
+          lualine_c = { 'filename' },
+          lualine_x = { 'filetype' },
+          lualine_y = { 'progress' },
+          lualine_z = { 'location' }
         },
         inactive_sections = {
-          lualine_c = {'filename'},
-          lualine_x = {'location'},
+          lualine_c = { 'filename' },
+          lualine_x = { 'location' },
         },
         tabline = {
           lualine_c = create_harpoon_file_funcs(require("harpoon.mark")),
         },
       }
-      require('harpoon.mark').on('changed', function ()
-        line.refresh({ scope = 'tabpage', place = { 'tabline' } })   
+      require('harpoon.mark').on('changed', function()
+        line.refresh({ scope = 'tabpage', place = { 'tabline' } })
       end)
     end,
   }
