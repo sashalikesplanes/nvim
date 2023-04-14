@@ -18,7 +18,11 @@ return {
   },
   {
     "mbbill/undotree",
-    keys = { "<leader>u", [[<cmd>UndotreeToggle<cr>]], mode = "n" }
+    config = function()
+      vim.keymap.set('n', '<leader>u', function()
+        vim.cmd.UndotreeToggle()
+      end, { desc = 'Toggle [U]ndo [T]ree' })
+    end
   },
   "tpope/vim-fugitive",
   "nvim-tree/nvim-web-devicons",
@@ -38,13 +42,17 @@ return {
       })
     end
   },
-  { "windwp/nvim-autopairs" },
+  {
+    "windwp/nvim-autopairs",
+    config = function()
+      require('nvim-autopairs').setup()
+    end
+  },
   {
     "tpope/vim-fugitive",
     config = function()
       vim.keymap.set('n', '<leader>gs', function()
         vim.cmd.Git()
-        vim.api.nvim_command("wincmd o")
       end, { desc = '[G]it [S]tatus' })
     end
   },
@@ -58,5 +66,11 @@ return {
       show_trailing_blankline_indent = false,
     },
   },
-  { 'sunjon/shade.nvim' }
+  {
+    'sunjon/shade.nvim',
+    config = function()
+      require('shade').setup()
+    end
+  },
+  { 'tpope/vim-commentary' }
 }
