@@ -67,5 +67,6 @@ return {
       show_trailing_blankline_indent = false,
     },
   },
-  { 'tpope/vim-commentary' }
+  { 'tpope/vim-commentary' },
+  { 'j-hui/fidget.nvim', config = function () require('fidget').setup({}) end }
 }
