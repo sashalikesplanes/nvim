@@ -1,5 +1,7 @@
 local HARPOON_BUFFERS = 5
 
+-- Returns a table of 5 functions
+-- The functions return the file name for each of the 5 harpoon buffers
 local function create_harpoon_file_funcs(mark)
   local function basename(file_path)
     return file_path:match("([^/]+)$")
@@ -26,51 +28,63 @@ local function create_harpoon_file_funcs(mark)
   return funcs
 end
 
-return {
-  {
-    "nvim-lualine/lualine.nvim",
-    dependencies = { "nvim-tree/nvim-web-devicons", "theprimeagen/harpoon" },
-    config = function()
-      local line = require('lualine')
+local function current_macro_recording()
+  local current_macro = vim.fn.reg_recording()
 
-      line.setup {
-        options = {
-          icons_enabled = true,
-          theme = 'auto',
-          component_separators = { left = '', right = '' },
-          section_separators = { left = '', right = '' },
-          disabled_filetypes = {
-            statusline = {},
-            winbar = {},
-          },
-          ignore_focus = {},
-          always_divide_middle = true,
-          globalstatus = false,
-          refresh = {
-            statusline = 1000,
-            tabline = 1000,
-            winbar = 1000,
-          }
+  if current_macro == '' then
+    return ''
+  end
+
+  return 'REC: ' .. current_macro
+end
+
+return {
+  { 'b0o/incline.nvim', config = function() require('incline').setup() end }, {
+  "nvim-lualine/lualine.nvim",
+  dependencies = { "nvim-tree/nvim-web-devicons", "theprimeagen/harpoon" },
+  config = function()
+    local line = require('lualine')
+
+    line.setup {
+      options = {
+        icons_enabled = true,
+        theme = 'auto',
+        component_separators = { left = '', right = '' },
+        section_separators = { left = '', right = '' },
+        disabled_filetypes = {
+          statusline = {},
+          winbar = {},
         },
-        sections = {
-          lualine_a = { 'mode' },
-          lualine_b = { 'diff', 'diagnostics' },
-          lualine_c = { 'filename' },
-          lualine_x = { 'filetype' },
-          lualine_y = { 'progress' },
-          lualine_z = { 'location' }
-        },
-        inactive_sections = {
-          lualine_c = { 'filename' },
-          lualine_x = { 'location' },
-        },
-        tabline = {
-          lualine_c = create_harpoon_file_funcs(require("harpoon.mark")),
-        },
-      }
-      require('harpoon.mark').on('changed', function()
-        line.refresh({ scope = 'tabpage', place = { 'tabline' } })
-      end)
-    end,
-  }
+        ignore_focus = {},
+        always_divide_middle = true,
+        globalstatus = false,
+        refresh = {
+          statusline = 1000,
+          tabline = 1000,
+          winbar = 1000,
+        }
+      },
+      inactive_sections = {},
+      winbar = {},
+      inactive_winbar = {},
+      sections = {
+        lualine_a = {},
+        lualine_b = {},
+        lualine_c = create_harpoon_file_funcs(require("harpoon.mark")),
+        lualine_x = { current_macro_recording },
+        lualine_y = { 'diagnostics', 'diff' },
+        lualine_z = { 'location' }
+      },
+    }
+    require('harpoon.mark').on('changed', function()
+      line.refresh({ scope = 'tabpage', place = { 'tabline' } })
+    end)
+
+    -- make status line take whole width, regardless of splits
+    -- has to be set here as it gets set by some plugin
+    vim.opt.laststatus = 3
+    -- hide command line
+    vim.opt.cmdheight = 0
+  end,
+}
 }
