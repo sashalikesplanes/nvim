@@ -68,5 +68,6 @@ return {
     },
   },
   { 'tpope/vim-commentary' },
-  { 'j-hui/fidget.nvim', config = function () require('fidget').setup({}) end }
+  { 'j-hui/fidget.nvim', config = function () require('fidget').setup({}) end },
+  { 'echasnovski/mini.nvim', version = '*' },
 }
