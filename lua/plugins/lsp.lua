@@ -22,7 +22,7 @@ return {
   },
   config = function()
     local lsp = require('lsp-zero').preset({})
-    lsp.on_attach(function(_, bufnr)
+    lsp.on_attach(function(client, bufnr)
       lsp.default_keymaps({ buffer = bufnr })
 
       local nmap = function(keys, func, desc)
@@ -63,7 +63,6 @@ return {
       filetypes = { "javascript", "javascriptreact", "typescript", "typescriptreact" },
       root_dir = lspconfig.util.root_pattern('.git'),
     }
-
     lsp.setup()
   end,
 }

@@ -85,6 +85,7 @@ return {
     vim.opt.laststatus = 3
     -- hide command line
     vim.opt.cmdheight = 0
+    vim.opt.showmode = false
   end,
 }
 }

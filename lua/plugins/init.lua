@@ -9,14 +9,6 @@ return {
     end,
   },
   {
-    "folke/which-key.nvim",
-    config = function()
-      vim.o.timeout = true
-      vim.o.timeoutlen = 300
-      require("which-key").setup()
-    end
-  },
-  {
     "mbbill/undotree",
     config = function()
       vim.keymap.set('n', '<leader>u', function()
@@ -69,5 +61,7 @@ return {
   },
   { 'tpope/vim-commentary' },
   { 'j-hui/fidget.nvim', config = function () require('fidget').setup({}) end },
-  { 'echasnovski/mini.nvim', version = '*' },
+  { 'MunifTanjim/prettier.nvim', config = function ()
+    require('prettier').setup()
+  end}
 }
